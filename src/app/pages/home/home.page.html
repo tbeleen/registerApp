@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+    <!--card para la bienvenida-->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Hola, {{ usuarioLogin }}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Bienvenido al sistema, estamos felices por tenerte aquí!
+      </ion-card-content>
+    </ion-card>
+    <!--card para los alumnos-->
+    <ion-card>
+      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+      <ion-card-header>
+        <ion-card-title>Alumnos</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Revisa a los alumnos aquí!
+        <ion-button routerLink="/alumnos">
+          <ion-icon slot="start" name="eye" ></ion-icon>
+          Ver Alumnos
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+    <!--card para los docentes-->
+    <ion-card>
+      <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
+      <ion-card-header>
+        <ion-card-title>Docentes</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        Revisa a los Docentes aquí!
+        <ion-button routerLink="/docentes">
+          <ion-icon slot="start" name="eye" ></ion-icon>
+          Ver Docentes
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+</ion-content>

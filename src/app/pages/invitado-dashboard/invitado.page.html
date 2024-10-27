@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar style="background: rgba(255, 255, 255, 0.9); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Bienvenido, {{ nombreUsuario }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background-image" style="text-align: center;">
+
+  <ion-card style="margin: 20px; border-radius: 15px;">
+    <ion-card-header>
+      <ion-card-title>¡Descubre la App de Asistencia de Duoc UC!</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <img src="assets/logo2.png" alt="Logo de la App" style="width: 80%; max-width: 300px; margin-bottom: 20px; border-radius: 15px;">
+
+      <p style="margin: 0 20px 30px; font-size: 18px; color: #666;">
+        Esta aplicación está diseñada especialmente para ti, alumno del Duoc UC. Registra tu asistencia de manera rápida y sencilla
+        ¡simplemente escaneando un código QR dentro del establecimiento!
+      </p>
+
+      <button (click)="toggleInfo()">¿Cómo Funciona?</button>
+
+      <div *ngIf="showInfo" class="info-box" style="font-size: 16px; color: #333; text-align: left; margin: 20px 0;">
+        <ul style="list-style-type: none; padding: 0;">
+          <li style="margin: 15px 0;">
+            <ion-icon name="qr-code" style="font-size: 20px; margin-right: 10px; color: #007bff;"></ion-icon>
+            Escanea el código QR en clase.
+          </li>
+          <li style="margin: 15px 0;">
+            <ion-icon name="checkmark-circle" style="font-size: 20px; margin-right: 10px; color: #13e62f;"></ion-icon>
+            Tu asistencia se registrará automáticamente.
+          </li>
+          <li style="margin: 15px 0;">
+            <ion-icon name="trophy" style="font-size: 20px; margin-right: 10px; color: #ffc107;"></ion-icon>
+            ¡Gana puntos y recompensas por tu asistencia!
+          </li>
+        </ul>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="wrapper">
+    <div (click)="goToLogin()" class="ion-activatable ripple-parent custom-parent">
+      Volver al Login
+      <ion-ripple-effect></ion-ripple-effect>
+    </div>
+
+    <div (click)="goToRegister()" class="ion-activatable ripple-parent">
+      Ir al Registro
+      <ion-ripple-effect class="custom-ripple"></ion-ripple-effect>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Recuperar Contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="header-container">
+    <img src="assets/logo2.png" alt="Logo" class="logo" />
+    <h2 class="header-title">¿Olvidaste tu contraseña?</h2>
+    <p class="header-subtitle">No te preocupes, ingresa tu correo electrónico para recuperarla.</p>
+  </div>
+
+  <ion-card class="custom-card">
+    <ion-card-content>
+      <form (submit)="recoveryPassword()">
+        <ion-item class="input-wrapper">
+          <ion-label position="floating">Correo Electrónico</ion-label>
+          <br>
+          <ion-input
+            type="email"
+            placeholder="example@duocuc.cl"
+            [(ngModel)]="emailValue"
+            name="email"
+            required
+          ></ion-input>
+        </ion-item>
+        <ion-button expand="block" type="submit" shape="round" color="primary" class="submit-btn">
+          Recuperar Contraseña
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-content>
+  <div class="background-container">
+      <ion-card-content [formGroup]="loginForm" class="transparent-card" >
+        <img alt="logo" src="assets/logo2.png" />
+        <ion-input formControlName="email" [(ngModel)]="emailValue" type="email" label="E-mail" label-placement="floating" fill="outline" placeholder="Ej: user"></ion-input>
+        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('required')" >
+          El correo es requerido!
+        </ion-text>
+        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('email')?.hasError('email')">
+          El correo es invalido!
+        </ion-text>
+        <br />
+        <br>
+        <ion-input formControlName="pass" [(ngModel)]="passValue" type="password" label="Contraseña:" label-placement="floating" fill="outline" placeholder="Ej: 12345">
+          <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+        </ion-input>
+        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('pass')?.hasError('required')" >
+          La contraseña es requerida!
+        </ion-text>
+        <br>
+        <ion-text position="stacked" color="danger" *ngIf="loginForm.get('pass')?.hasError('minlength')">
+          La contraseña tiene como min 6 caracteres!
+        </ion-text>
+        <ion-button expand="block" shape="round" fill="outline" color="primary" (click)="login()">
+          <ion-icon slot="end" name="log-in"></ion-icon> Iniciar Sesión
+        </ion-button>
+        
+        <ion-button expand="block" shape="round" color="danger" routerLink="/register">
+          <ion-icon slot="end" name="person-add"></ion-icon> Registrarse
+        </ion-button>
+        <ion-text color="primary" (click)="goToForgotPassword()">
+          <p style="text-align: center; cursor: pointer; margin-top: 1rem;">¿Olvidaste tu contraseña?</p>
+        </ion-text>
+      </ion-card-content>
+  </div>
+</ion-content>

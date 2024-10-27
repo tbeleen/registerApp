@@ -1,0 +1,52 @@
+.topics-section {
+  padding: 16px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center; /* Centra la sección horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: calc(100vh - 90px); /* Altura disponible sin la barra superior */
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-between; /* Espacio entre las cartas */
+  align-items: center;
+  width: 90%; /* Ocupa casi todo el ancho */
+  max-width: 1200px; /* Ancho máximo del contenedor */
+}
+
+.topic-card {
+  width: 45%; /* Cada carta ocupa 45% del contenedor */
+  height: 250px; /* Altura fija */
+  border-radius: 16px;
+  margin: 10px; /* Espacio entre las cartas */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.topic-card img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 8px;
+}
+
+ion-card-content {
+  font: oblique bold 120% cursive;
+  font-size: 22px;
+}
+
+body.contenido {
+  background-image: url(../../../../assets/alumnos/fondo1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.card-container {
+  flex-wrap: nowrap; /* Evita que se apilen verticalmente */
+  overflow-x: auto; /* Permite que haya scroll horizontal si no caben */
+}

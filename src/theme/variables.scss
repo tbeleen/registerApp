@@ -1,0 +1,30 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+
+body.barcode-scanning-active{
+    visibility: hidden;
+    --background: transparent;
+    --ion-background-color: transparent;
+}
+
+.barcode-sanning-modal {
+    visibility: visible ;
+}
+
+@media (prefers-color-scheme: dark) {
+    .barcode-scanning-active{
+        visibility: hidden;
+        --background: transparent;
+        --ion-background-color: transparent;
+    } 
+}
+
+  // Hide all elements
+  body.barcode-scanner-active {
+    visibility: hidden;
+  }
+  
+  // Show only the barcode scanner modal
+  .barcode-scanner-modal {
+    visibility: visible;
+  }

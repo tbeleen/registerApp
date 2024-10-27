@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        Volver
+      </ion-button>
+    </ion-buttons>
+    <div class="conteiner-logo">
+      <img  src="assets/logo2.png" alt="">
+    </div>
+    <ion-buttons slot="end">
+      <ion-menu-button color="dark"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="card-container">
+    <ion-card class="full-width-card">
+      <ion-list>
+        <h1>ASIGNATURAS</h1>
+        <ion-item *ngFor="let aux of asignatura" (click)="verAsignaturas(aux)">
+          <ion-label>
+            <h2>{{ aux.nombre }}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+</ion-content>

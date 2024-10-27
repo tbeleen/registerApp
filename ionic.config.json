@@ -1,0 +1,7 @@
+{
+  "name": "NBAAPP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

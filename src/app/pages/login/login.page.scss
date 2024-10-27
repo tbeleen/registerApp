@@ -1,0 +1,52 @@
+.background-container {
+  background-image: url('../../../assets/patio.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+.transparent-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 90%;
+}
+
+.input-item {
+  margin-bottom: 15px;
+  --background: transparent;
+  border-radius: 8px;
+  --padding-start: 10px;
+}
+
+.elegant-button {
+  margin-top: 15px;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+}
+
+.forgot-password {
+  display: block;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #007bff;
+}
+
+.forgot-password:hover {
+  color: #0056b3;
+}

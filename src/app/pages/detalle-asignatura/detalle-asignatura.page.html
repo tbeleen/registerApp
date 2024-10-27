@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">Volver</ion-button>
+    </ion-buttons>
+    <div class="conteiner-logo">
+      <img src="assets/logo2.png" alt="Logo">
+      <div *ngIf="docente">
+        <ion-icon name="qr-code-outline" (click)="crear_qr()"></ion-icon>
+      </div>
+      <div class="logoAlumno" *ngIf="alumno">
+        <ion-icon name="camera-outline" (click)="openCamera()"></ion-icon>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Mostrar el profesor asignado -->
+  <div *ngIf="profesorAsignado">
+    <h1>{{ profesorAsignado.nombre }} {{ profesorAsignado.apellido }}</h1>
+  </div>
+  <h1>{{ nombreAsignatura }}</h1>
+  <!-- Mostrar los alumnos asignados -->
+  <div class="card-container">
+    <div class="card">
+      <ion-card>
+        <h1>Alumnos</h1>
+        <ion-item *ngFor="let aux of alumnos">
+          <ion-label>
+            <h2>{{ aux.nombre }} {{ aux.apellido }}</h2>
+            <p>{{ aux.estadoAsistencia || 'Ausente' }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

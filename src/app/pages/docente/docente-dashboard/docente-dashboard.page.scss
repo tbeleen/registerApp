@@ -1,0 +1,55 @@
+.topics-section {
+  padding: 16px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  height: calc(100vh - 90px); /* Altura dinámica sin el header */
+}
+
+.card-container {
+  display: flex;
+  justify-content: center; /* Asegura que la carta se centre horizontalmente */
+  align-items: center;
+  width: 100%; /* Ocupa todo el ancho del contenedor */
+}
+
+.topic-card {
+  width: 80%; /* La carta ocupará el 80% del ancho */
+  height: 60%; /* La carta ocupará el 60% de la altura */
+  border-radius: 16px;
+  margin: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra para darle profundidad */
+  background-color: #fff; /* Fondo blanco para contraste */
+}
+
+.topic-card img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 16px;
+}
+
+ion-card-content {
+  font: oblique bold 120% cursive;
+  font-size: 24px;
+}
+
+body.contenido {
+  background-image: url(../../../../assets/alumnos/fondo1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.conteiner-logo {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}

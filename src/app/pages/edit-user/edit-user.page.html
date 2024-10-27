@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>    
+    <ion-title>Editar Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="editUserForm" (ngSubmit)="actualizarUser()" class="form-container">
+    <ion-item>
+      <ion-label position="stacked">Email:</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Nombre:</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Contraseña:</ion-label>
+      <ion-input formControlName="pass" type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Tipo:</ion-label>
+      <ion-select formControlName="tipo" placeholder="Seleccionar">
+        <ion-select-option value="admin">Administrador</ion-select-option>
+        <ion-select-option value="docente">Docente</ion-select-option>
+        <ion-select-option value="alumno">Alumno</ion-select-option>
+        <ion-select-option value="invitado">Invitado</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="button-group">
+      <ion-button expand="block" fill="outline" color="primary" type="submit">Modificar</ion-button>
+      <ion-button expand="block" color="danger" (click)="eliminarUser()">Eliminar</ion-button>
+    </div>
+  </form>
+</ion-content>

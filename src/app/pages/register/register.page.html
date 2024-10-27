@@ -1,0 +1,50 @@
+<ion-content>
+  <div class="background-container">
+    <ion-card class="transparent-card">
+      <img alt="Logo" src="assets/logo2.png" class="logo" />
+      <ion-card-content [formGroup]="loginForm">
+        <ion-item class="input-item">
+          <ion-input formControlName="nombre" type="text" label="Nombre" label-placement="floating" fill="solido" placeholder="Ej: Juan Pérez"></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="loginForm.get('nombre')?.hasError('required')">
+          El nombre es requerido!
+        </ion-text>
+        <ion-item class="input-item">
+          <ion-input formControlName="email" [(ngModel)]="emailValue" type="email" label="E-mail" label-placement="floating" fill="solido" placeholder="Ej: usuario@example.com"></ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="loginForm.get('email')?.hasError('required')">
+          El correo es requerido!
+        </ion-text>
+        <ion-text color="danger" *ngIf="loginForm.get('email')?.hasError('email')">
+          El correo es inválido!
+        </ion-text>
+        <ion-item class="input-item">
+          <ion-input formControlName="pass" [(ngModel)]="passValue" type="password" label="Contraseña" label-placement="floating" fill="solido" placeholder="Ej: ********">
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
+        </ion-item>
+        <ion-text color="danger" *ngIf="loginForm.get('pass')?.hasError('required')">
+          La contraseña es requerida!
+        </ion-text>
+        <ion-text color="danger" *ngIf="loginForm.get('pass')?.hasError('minlength')">
+          La contraseña debe tener al menos 6 caracteres!
+        </ion-text>
+        <ion-item class="input-item">
+          <ion-label>Tipo usuario</ion-label>
+          <ion-select formControlName="tipoUsuario" placeholder="Seleccionar">
+            <ion-select-option value="alumno">Alumno</ion-select-option>
+            <ion-select-option value="docente">Docente</ion-select-option>
+            <ion-select-option value="invitado">Invitado</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-text color="danger" *ngIf="loginForm.get('tipoUsuario')?.hasError('required')">
+          El tipo de usuario es requerido!
+        </ion-text>
+        <ion-button expand="block" shape="round" color="primary" (click)="register()" class="elegant-button">Registrarse</ion-button>
+        <ion-text color="primary" (click)="verCuenta()" class="forgot-password">
+          ¿Ya tienes una cuenta?
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

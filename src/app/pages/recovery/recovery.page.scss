@@ -1,0 +1,39 @@
+.header-container {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .logo {
+    max-width: 120px;
+    margin: 0 auto 1rem;
+  }
+  
+  .header-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .header-subtitle {
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  .custom-card {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input-wrapper {
+    margin-bottom: 1.5px;
+  }
+  
+  .submit-btn {
+    --background: #007bff;
+    --border-radius: 50px;
+    font-weight: bold;
+  }
+  

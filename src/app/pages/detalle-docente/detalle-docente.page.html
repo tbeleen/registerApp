@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Alumno</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-list>
+    <ion-item *ngFor="let aux of alumnosFiltrados" (click)="verDetalleAlumno(aux)">
+      <ion-avatar>
+        <img [src]="aux.imagen" alt="">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{aux.nombre}}  {{aux.apellido}}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

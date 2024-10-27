@@ -1,0 +1,23 @@
+.conteiner-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+}
+h1 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    text-decoration: solid;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 20px;
+}
+
+ion-item {
+    padding: 9px;
+    
+}
+
+ion-label h2 {
+    font-size: 15px;
+}
