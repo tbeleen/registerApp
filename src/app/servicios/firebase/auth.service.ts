@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
+import firebase from 'firebase/compat/app';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,31 @@ export class AuthService {
   login(email:string,pass:string){
     return this.angularFireAuth.signInWithEmailAndPassword(email,pass);
   }
+
+   /**
+   * Inicia sesión con Google.
+   */
+  loginWithGoogle() {
+    return this.angularFireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .catch(error => {
+        console.error('Error al iniciar sesión con Google:', error);
+        throw error;
+      });
+  }
+
+  loginWithGitHub() {
+    const provider = new firebase.auth.GithubAuthProvider();
+    return this.angularFireAuth.signInWithPopup(provider)
+      .then(result => {
+        console.log('Usuario autenticado con GitHub:', result);
+        return result;
+      })
+      .catch(error => {
+        console.error('Error al iniciar sesión con GitHub:', error);
+        throw error;
+      });
+    }
+  
 
   logout(){
     return this.angularFireAuth.signOut();
@@ -52,6 +78,20 @@ export class AuthService {
     await this.firestore.collection('usuarios').doc(usuarioId).update({
         clases: asignaturasAsignadas
     });
+  }
+
+  getUsuarioActualId(): string | null {
+    return localStorage.getItem('usuarioActualId');
+  }
+
+  // Función para establecer el ID del usuario actual (cuando el usuario inicia sesión)
+  setUsuarioActualId(id: string): void {
+    localStorage.setItem('usuarioActualId', id);
+  }
+
+  // Función para limpiar el ID del usuario actual (cuando el usuario cierra sesión)
+  clearUsuarioActualId(): void {
+    localStorage.removeItem('usuarioActualId');
   }
   
 }

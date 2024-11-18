@@ -52,7 +52,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/asignaturas/asignaturas.module').then( m => m.AsignaturasPageModule)
   },
   {
-    path: 'detalle-asignatura/:nombre',
+    path: 'detalle-asignatura/:nombreAsignatura',
     loadChildren: () => import('./pages/detalle-asignatura/detalle-asignatura.module').then( m => m.DetalleAsignaturaPageModule)
   },
   {
@@ -84,12 +84,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/mapa/mapa.module').then( m => m.MapaPageModule)
   },
   {
-    path: 'generate-qr',
+    path: 'generate-qr/:nombreAsignatura',
     loadChildren: () => import('./pages/generate-qr/generate-qr.module').then( m => m.GenerateQrPageModule)
   },
   {
     path: 'leer-qr',
     loadChildren: () => import('./pages/leer-qr/leer-qr.module').then( m => m.LeerQrPageModule)
+  },
+  {
+    path: 'editar-asig/:id',
+    loadChildren: () => import('./pages/editar-asig/editar-asig.module').then( m => m.EditarAsigPageModule)
   },
 ];
 

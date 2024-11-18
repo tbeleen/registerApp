@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Route } from '@angular/router';
+import { NavController } from '@ionic/angular';
 import { Alumno } from 'src/app/interfaces/alumno';
 import { AlumnoService } from 'src/app/servicios/firebase/alumno.service';
 import { AsistenciaService } from 'src/app/servicios/firebase/asistencia.service';
@@ -16,7 +17,7 @@ export class RegistroAsistenciaPage implements OnInit {
   nombreAsignatura: string = '';
   asistenciaList: any[] = [];
 
-  constructor(private asistenciaService: AsistenciaService,private activateRoute:ActivatedRoute, private firestore: AngularFirestore, private alumnoService:AlumnoService) { }
+  constructor(private asistenciaService: AsistenciaService,private activateRoute:ActivatedRoute, private firestore: AngularFirestore, private alumnoService:AlumnoService, private navController: NavController) { }
 
   ngOnInit() {
     const asignaturaId = this.activateRoute.snapshot.paramMap.get('asignaturaId') || '';
@@ -53,6 +54,7 @@ export class RegistroAsistenciaPage implements OnInit {
       alumno.estadoAsistencia = registro ? registro.estado : 'Ausente'; // 'Presente' o 'Ausente'
     });
   }
+  
 
 
 }

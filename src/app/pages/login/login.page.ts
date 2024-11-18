@@ -9,6 +9,8 @@ import { AlumnoService } from 'src/app/servicios/firebase/alumno.service';
 import { AuthService } from 'src/app/servicios/firebase/auth.service';
 import { MensajesService } from 'src/app/servicios/mensajes.service';
 import Swal from 'sweetalert2';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +33,8 @@ export class LoginPage implements OnInit {
               private alumnoService: AlumnoService,
               private authservices : AuthService,
               private firestore:AngularFirestore,
-              private mensaje:MensajesService) {
+              private mensaje:MensajesService,
+              private angularFireAuth: AngularFireAuth,) {
     this.loginForm = this.formBuilder.group({
       email : ['', [Validators.required, Validators.email]],
       pass : ['', [Validators.required, Validators.minLength(6)]],
@@ -91,6 +94,44 @@ export class LoginPage implements OnInit {
       this.mensaje.mensaje('Ocurrió un error al iniciar sesión. Inténtelo nuevamente!','error','Error!');
     }
   }
+
+  loginWithGoogle() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    return this.angularFireAuth.signInWithPopup(provider)
+      .then((result) => {
+        // El usuario está autenticado, puedes obtener la información del usuario
+        const user = result.user;
+        console.log('Usuario autenticado:', user);
+
+        // Aquí puedes guardar datos adicionales en Firestore si lo necesitas
+        // Ejemplo de guardar usuario en Firestore
+        this.firestore.collection('users').doc(user?.uid).set({
+          email: user?.email,
+          displayName: user?.displayName,
+          photoURL: user?.photoURL
+        });
+
+        // Redirigir a la página principal después del login exitoso
+        this.router.navigate(['/invitado-dashboard']);
+      })
+      .catch((error) => {
+        console.error('Error al iniciar sesión con Google:', error);
+        // Aquí puedes manejar los errores como mostrar un mensaje de error
+      });
+  }
+
+  loginWithGitHub() {
+    this.authservices.loginWithGitHub()
+      .then(result => {
+        console.log('Login exitoso:', result);
+        // Aquí puedes redirigir a una página o hacer algo más
+        this.router.navigate(['/invitado-dashboard']);
+      })
+      .catch(error => {
+        console.error('Error de login:', error);
+      });
+  }
+
   
 
   goToForgotPassword() {

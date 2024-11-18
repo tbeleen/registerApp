@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar Asignatura</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="guardarAsignatura()" #asignaturaForm="ngForm">
+    <ion-item>
+      <ion-label position="floating">Nombre de la Asignatura:</ion-label>
+      <ion-input type="text" [(ngModel)]="asignatura.nombre" name="nombre" required></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Docente:</ion-label>
+      <ion-select [(ngModel)]="asignatura.docente" name="docente" required>
+        <ion-select-option *ngFor="let docente of docentes" [value]="docente.id">
+          {{ docente.nombre }} <!-- Asegúrate de que 'nombre' sea el campo correcto del docente -->
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" [disabled]="!asignaturaForm.valid">Guardar</ion-button>
+  </form>
+</ion-content>

@@ -67,6 +67,10 @@ export class AlumnoDashboardPage implements OnInit {
     speed: 400,
     spaceBetween: 10,
   };
+
+  registroAsis() {
+    this.router.navigate(['/registro-asistencia']);
+  }
   
 
 }

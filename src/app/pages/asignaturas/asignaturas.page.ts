@@ -40,17 +40,14 @@ export class AsignaturasPage implements OnInit {
   
   }
   verAsignaturas(aux:any) {
-    this.router.navigate(['detalle-asignatura', aux.nombre]);
+    this.router.navigate(['detalle-asignatura', aux.id]);
   }
 
   logout(){
     this.authservice.logout();
     this.router.navigate(['/login']);
   }
-  goBack() {
-    this.navController.navigateBack('/alumno-dashboard'); 
-  }
-
+  
   async obtenerAsignaturas() {
     const usuarioLogin = JSON.parse(localStorage.getItem('usuarioLogin') || '{}'); // Obtener usuario logueado
     if (usuarioLogin && usuarioLogin.clases) {

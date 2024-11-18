@@ -9,17 +9,20 @@
 
 .card-container {
   display: flex;
-  justify-content: space-between; /* Espacio entre las cartas */
+  flex-wrap: wrap; /* Permite que las tarjetas pasen a la siguiente línea si es necesario */
+  justify-content: center; /* Centra las tarjetas horizontalmente */
   align-items: center;
-  width: 90%; /* Ocupa casi todo el ancho */
+  width: 100%; /* Ocupa todo el ancho disponible */
   max-width: 1200px; /* Ancho máximo del contenedor */
+  gap: 16px; /* Espacio entre las tarjetas */
 }
 
 .topic-card {
-  width: 45%; /* Cada carta ocupa 45% del contenedor */
-  height: 250px; /* Altura fija */
+  flex: 1 1 30%; /* Cada tarjeta ocupa aproximadamente el 30% del ancho del contenedor */
+  max-width: 200px; /* Ancho máximo de cada tarjeta */
+  height: 150px; /* Altura fija */
   border-radius: 16px;
-  margin: 10px; /* Espacio entre las cartas */
+  margin: 10px; /* Espacio entre las tarjetas */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -45,8 +48,4 @@ body.contenido {
   height: 100vh;
   margin: 0;
   padding: 0;
-}
-.card-container {
-  flex-wrap: nowrap; /* Evita que se apilen verticalmente */
-  overflow-x: auto; /* Permite que haya scroll horizontal si no caben */
 }

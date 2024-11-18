@@ -99,6 +99,15 @@ export class RegisterPage implements OnInit {
             clases: nuevoUsuario.clases
           });
 
+          // Actualizar asignaturas con el ID del alumno
+          for (const asignatura of asignaturasAleatorias) {
+            asignatura.alumnos = asignatura.alumnos || []; // Asegúrate de inicializar el array si no existe
+            if (!asignatura.alumnos.includes(user.uid)) { // Evitar duplicados
+              asignatura.alumnos.push(user.uid);
+            }
+            await this.asignaturaService.actualizarAsignatura(asignatura.id, { alumnos: asignatura.alumnos }); // Actualizar la asignatura
+          }
+
           if (tipoUsuario === 'docente') {
             for (const asignatura of asignaturasAleatorias) {
               asignatura.docente = user.uid;

@@ -6,7 +6,7 @@
     <div class="conteiner-logo">
       <img src="assets/logo2.png" alt="Logo">
       <div *ngIf="docente">
-        <ion-icon name="qr-code-outline" (click)="crear_qr()"></ion-icon>
+        <ion-icon name="qr-code-outline" *ngIf="nombreAsignatura" (click)="crear_qr(nombreAsignatura)"></ion-icon>
       </div>
       <div class="logoAlumno" *ngIf="alumno">
         <ion-icon name="camera-outline" (click)="openCamera()"></ion-icon>

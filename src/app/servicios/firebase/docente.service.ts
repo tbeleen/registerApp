@@ -25,4 +25,18 @@ export class DocenteService {
       ref.where('clases', 'array-contains', asignaturaId).where('tipo', '==', 'docente')
     ).valueChanges();
   }
+
+  obtenerDocentes(): Observable<any[]> {
+    return this.firestore
+      .collection('usuarios', (ref) => ref.where('tipo', '==', 'docente'))
+      .snapshotChanges()
+      .pipe(
+        map((changes) =>
+          changes.map((c) => ({
+            id: c.payload.doc.id,
+            ...(c.payload.doc.data() as any) // Conversión explícita a 'any'
+          }))
+        )
+      );
+  }
 }

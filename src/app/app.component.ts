@@ -6,6 +6,7 @@ import { Usuario } from './interfaces/usuario';
 import { AsignaturaService } from './servicios/firebase/asignatura.service';
 import { v4 as uuidv4 } from 'uuid';
 import { RandomUserService } from './servicios/random-user.service';
+import { MensajesService } from './servicios/mensajes.service';
 
 @Component({
   selector: 'app-root',
@@ -25,7 +26,7 @@ export class AppComponent {
     return mezcladas.slice(0, numAsignaturas);
   }
 
-  constructor(private router: Router, private randomUserService: RandomUserService, private firestore:AngularFirestore, private asignaturaService: AsignaturaService) {}
+  constructor(private router: Router, private randomUserService: RandomUserService, private firestore:AngularFirestore, private asignaturaService: AsignaturaService, private mensajesService:MensajesService) {}
   ngOnInit() {
     const usuario = localStorage.getItem('usuarioLogin');
 
@@ -90,7 +91,7 @@ generarDocentes() {
         await this.asignaturaService.actualizarAsignatura(asignatura.id, { docente: uniqueId });
       }
     }
-
+    this.mensajesService.mensaje('5 docentes generados y guardados correctamente.','success','usuarios generados exitosamente')
     console.log('5 docentes generados y guardados correctamente.');
   }, error => {
     console.error('Error al generar docentes:', error);
@@ -132,6 +133,7 @@ generarAlumnos() {
       await this.firestore.collection('usuarios').doc(uniqueId).update({ clases });
     }
 
+      this.mensajesService.mensaje('5 alumnos generados y guardados correctamente.','success','usuarios generados exitosamente')
     console.log('5 alumnos generados y guardados correctamente.');
   }, error => {
     console.error('Error al generar alumnos:', error);

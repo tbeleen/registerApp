@@ -36,7 +36,7 @@
     "@types/googlemaps": "^3.43.3",
     "@zxing/ngx-scanner": "^18.0.1",
     "capacitor-native-biometric": "^4.2.2",
-    "firebase": "^10.13.2",
+    "firebase": "^10.14.1",
     "ionicons": "^7.0.0",
     "leaflet": "^1.9.4",
     "ng-qrcode": "^18.0.0",

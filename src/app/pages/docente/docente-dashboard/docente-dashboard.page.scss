@@ -2,41 +2,41 @@
   padding: 16px;
   margin-top: 40px;
   display: flex;
-  justify-content: center; /* Centra el contenido horizontalmente */
+  justify-content: center; /* Centra todo el contenido horizontalmente */
   align-items: center; /* Centra el contenido verticalmente */
-  height: calc(100vh - 90px); /* Altura dinámica sin el header */
+  height: calc(100vh - 80px); /* Altura dinámica sin el header */
 }
 
 .card-container {
   display: flex;
-  justify-content: center; /* Asegura que la carta se centre horizontalmente */
+  justify-content: space-between; /* Coloca las tarjetas en los extremos */
   align-items: center;
   width: 100%; /* Ocupa todo el ancho del contenedor */
+  max-width: 800px; /* Ancho máximo del contenedor para limitar el tamaño */
 }
 
 .topic-card {
-  width: 80%; /* La carta ocupará el 80% del ancho */
-  height: 60%; /* La carta ocupará el 60% de la altura */
+  width: 300px; /* Ocupa el 45% del ancho del contenedor */
+  height: 200px; /* Altura fija para cada tarjeta */
   border-radius: 16px;
-  margin: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra para darle profundidad */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
   background-color: #fff; /* Fondo blanco para contraste */
 }
 
 .topic-card img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   margin-bottom: 16px;
 }
 
 ion-card-content {
   font: oblique bold 120% cursive;
-  font-size: 24px;
+  font-size: 18px;
 }
 
 body.contenido {
@@ -52,4 +52,8 @@ body.contenido {
   margin-top: 16px;
   display: flex;
   justify-content: center;
+}
+
+.imagenRegistro {
+  margin-top: 10px;
 }

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Asignatura } from 'src/app/interfaces/asignatura';
+import { Docente } from 'src/app/interfaces/docente';
 import { AsignaturaService } from 'src/app/servicios/firebase/asignatura.service';
+import { DocenteService } from 'src/app/servicios/firebase/docente.service';
 import { MensajesService } from 'src/app/servicios/mensajes.service';
 import Swal from 'sweetalert2';
 
@@ -13,14 +16,17 @@ import Swal from 'sweetalert2';
 })
 export class AgregarAsigPage implements OnInit {
 
-  nuevaAsignatura = { nombre: ''};
+  nuevaAsignatura = { nombre: '', docente: '' };
   asignaturas: Asignatura[] = [];
+  docentes: Docente[] = [];
 
 
   constructor(private asignaturaService: AsignaturaService,
               private navController: NavController,
               private firestore: AngularFirestore,
-              private mensajesService: MensajesService,) {
+              private mensajesService: MensajesService,
+              private docenteService:DocenteService,
+              private router:Router) {
     const usuarioLogin = localStorage.getItem('usuarioLogin');
     try{
       const usuario = JSON.parse(usuarioLogin || '{}');
@@ -31,6 +37,7 @@ export class AgregarAsigPage implements OnInit {
   }
 
   ngOnInit() {
+    this.cargarDocentes();
     this.obtenerAsignaturas();
     const tipo = localStorage.getItem('usuarioLogin');
     if (tipo) {
@@ -46,6 +53,10 @@ export class AgregarAsigPage implements OnInit {
         console.error('Error al analizar el tipo de usuario:', error);
       }
     }
+  }
+
+  verAsignatura(asignaturaId: string) {
+    this.router.navigate(['editar-asig', asignaturaId]);
   }
 
   goBack() {
@@ -84,7 +95,7 @@ export class AgregarAsigPage implements OnInit {
       this.mensajesService.mensaje('Asignatura agregada exitosamente!','success','Éxito!')
 
       // Limpiar el formulario
-      this.nuevaAsignatura = { nombre: ''}; 
+      this.nuevaAsignatura = { nombre: '',docente:''}; 
     } catch (error) {
       console.error('Error al agregar asignatura:', error);
       this.mensajesService.mensaje('No se pudo agregar la asignatura. Inténtalo de nuevo.','error','Error!')
@@ -108,5 +119,12 @@ export class AgregarAsigPage implements OnInit {
       this.mensajesService.mensaje('No se puedo eliminar la asignatura','error','Error!')
       console.error("Error eliminando la asignatura: ", error);
     }
+  }
+
+  cargarDocentes() {
+    this.docenteService.getDocente().subscribe(
+      (docentes) => this.docentes = docentes,
+      (error) => console.error('Error al cargar docentes:', error)
+    );
   }
 }
